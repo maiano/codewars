@@ -1,0 +1,2 @@
+# codewars
+Task from Codewars
