@@ -3,7 +3,7 @@
 module Main where
 
 import Lib
-import Data.Char ( toUpper, toLower, isLetter, isDigit, ord )
+import Data.Char ( toUpper, toLower, isLetter, isDigit, ord, intToDigit, digitToInt )
 import Data.List (union, group, sort, nub, (\\), sortBy, sortOn, elemIndex, delete, find, transpose)
 import Data.List.Split (split, startsWithOneOf)
 import Data.Ord ( Down(Down) )
@@ -232,14 +232,54 @@ highestRank :: Ord c => [c] -> c
 highestRank = head . last . sortOn length . group . sort
 
 -- Break camelCase
-solution` :: String -> String
-solution` = unwords . split (startsWithOneOf ['A'..'Z'])
+solution' :: String -> String
+solution' = unwords . split (startsWithOneOf ['A'..'Z'])
 -- solution` = unwords . groupBy (\x y -> isLower y)
 
 -- Snail
 snail :: [[Int]] -> [Int]
 snail [] = []
 snail (x:xs) = x ++ snail (reverse $ transpose xs)
+
+-- Odd or Even?
+oddOrEven :: Num a => Integral a => [a] -> String
+oddOrEven xs | odd $ sum xs = "odd"
+             | otherwise    = "even"
+
+-- Form The Minimum
+minValue :: [Int] -> Int
+-- minValue = read . map intToDigit . sort . nub
+minValue = foldl1 (\x y -> x * 10 + y) . sort . nub
+
+-- Remove the minimum
+removeSmallest :: [Int] -> [Int]
+removeSmallest = delete =<< minimum
+
+-- Collatz
+collatz :: Int -> String
+collatz n
+  | n == 1 = "1"
+  | otherwise = show n ++ "->" ++ collatz (go n)
+  where go n
+         | even n = n `div` 2
+         | otherwise = n * 3 + 1
+
+-- Is a number prime?
+isPrime :: Integer -> Bool
+isPrime x
+  | x <= 1 = False
+  | otherwise = null [i | i <- [2.. floor $ sqrt $ fromInteger x], x `mod` i == 0]
+
+-- Printer Errors
+printerError :: [Char] -> [Char]
+printerError s = show (length str) ++ "/" ++ show (length s)
+    where str = filter (> 'm') s
+
+-- String ends with?
+solution'' :: String -> String -> Bool
+solution'' s1 s2 = drop len s1 == s2
+    where len = length s1 - length s2
+-- solution'' = flip isSuffixOf
 
 main :: IO ()
 main = someFunc
