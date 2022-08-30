@@ -2,3 +2,4 @@
 Task from Codewars
 Kotlin 6-7
 Haskell 4-7
+Js 7
