@@ -27,3 +27,20 @@ function XO(str) {
   return !xo;
 }
 
+// Highest and Lowest
+
+function highAndLow(numbers){
+  numbers = numbers.split(' ');
+  return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+}
+
+// Disemvowel Trolls
+
+function disemvowel(str) {
+  const vowels = 'aeiouAEIOU';  
+  return str.split('').filter(el => !vowels.includes(el)).join('');
+}
+
+// disemvowel = str => str.replace(/[aeiou]/gi,'');
+
+
