@@ -113,3 +113,65 @@ function nthFibo(n) {
   return prev;
 }
 
+// Javascript Mathematician
+
+const calculate = (...a) => (...b) => [].concat(a, b).reduce((a, b) => a + b);
+
+// Array Deep Count
+
+function deepCount(a){
+  return a
+  .reduce((acc, val) => {
+     return acc + (Array.isArray(val) ? deepCount(val) : 0);
+   }, a.length);
+}
+
+// Length of missing array
+
+// function getLengthOfMissingArray(arrayOfArrays) {
+//   const len = (arrayOfArrays || [])
+//     .map(a => a ? a.length : 0)
+//     .sort((a, b) => a - b)
+  
+//   if (len.includes(0)) {
+//     return 0
+//   }
+//   for (let i = 0; i < len.length - 1; i++) {
+//     if (len[i] + 1 !== len[i + 1]) {
+//       return len[i] + 1
+//     }
+//   }
+//   return 0
+// }
+
+// Pair of gloves
+
+function numberOfPairs(gloves) {
+  const glovesColor = new Set(gloves);
+  let pairs = 0;
+  for (const i of glovesColor) {
+    let count = 0;
+    gloves.forEach(element => {
+      if (element === i) count++
+    });
+    pairs += count >> 1
+  }
+  return pairs
+}
+
+// Sorting by bits
+
+const sortByBit = arr => arr.sort((a, b) => {
+  const countBits = d => [...d.toString(2)].map(el => Number(el)).reduce((x, y) => x + y);
+  return countBits(a) - countBits(b) || a - b
+})
+
+// const sortByBit = arr => arr
+//   .sort((a, b) => {
+//     const countBits = d => d && d % 2 + countBits(d >> 1);
+//     return countBits(a) - countBits(b) || a - b
+//   }
+// )
+
+
+
