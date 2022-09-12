@@ -193,3 +193,24 @@ const sortByBit = (arr) =>
 //     return countBits(a) - countBits(b) || a - b
 //   }
 // )
+
+// Can you keep a secret?
+
+function createSecretHolder(secret) {
+  let item = secret;
+  return {
+    getSecret: function () {
+      return item;
+    },
+    setSecret: function (s) {
+      item = s;
+    },
+  };
+}
+
+function createSecretHolder(secret) {
+  return {
+    getSecret: () => secret,
+    setSecret: (value) => (secret = value),
+  };
+}
