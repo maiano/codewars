@@ -197,20 +197,67 @@ const sortByBit = (arr) =>
 // Can you keep a secret?
 
 function createSecretHolder(secret) {
-  let item = secret;
-  return {
-    getSecret: function () {
-      return item;
-    },
-    setSecret: function (s) {
-      item = s;
-    },
-  };
-}
-
-function createSecretHolder(secret) {
   return {
     getSecret: () => secret,
     setSecret: (value) => (secret = value),
   };
 }
+
+// Which color is the brightest?
+
+function brightest(colors) {
+  let colorIndex = 0,
+    maxValue = 0;
+  colors.forEach((el, i) => {
+    let r = parseInt(el.slice(1, 3), 16),
+      g = parseInt(el.slice(3, 5), 16),
+      b = parseInt(el.slice(5, 7), 16),
+      value = Math.max(r, g, b);
+    if (value > maxValue) {
+      maxValue = value;
+      colorIndex = i;
+    }
+  });
+  return colors[colorIndex];
+}
+
+// Let's Recycle!
+
+function recycle(array) {
+  const materials = ["paper", "glass", "organic", "plastic"];
+  return materials.map((item) =>
+    array
+      .filter((el) => el.material === item || el.secondMaterial === item)
+      .map((el) => el.type)
+  );
+}
+
+// Ones and Zeros
+
+const binaryArrayToNumber = (arr) => arr.reduce((a, b) => (a << 1) | b);
+
+// Consecutive strings
+
+const longestConsec = (strarr, k) => {
+  if (strarr.length == 0 || k > strarr.length || k < 1) return "";
+
+  let longStr = "",
+    str = "";
+
+  for (let i = 0; i < strarr.length; i++) {
+    str = strarr.slice(i, i + k).join("");
+    if (str.length > longStr.length) longStr = str;
+  }
+  return longStr;
+};
+
+// Write Number in Expanded Form
+
+const expandedForm = (n) => {
+  return [...String(n)]
+    .map((el, i, arr) =>
+      el !== "0" ? el + "0".repeat(arr.length - i - 1) : ""
+    )
+    .filter((el) => el)
+    .join(" + ");
+};
