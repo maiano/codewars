@@ -261,3 +261,35 @@ const expandedForm = (n) => {
     .filter((el) => el)
     .join(" + ");
 };
+
+// Array.prototype.reverse()
+
+Array.prototype.reverse = function () {
+  let len = this.length;
+
+  for (let i = 0; i < len / 2; i++) {
+    [this[i], this[len - i - 1]] = [this[len - i - 1], this[i]];
+  }
+  return this;
+};
+
+// Javascript from the Inside #1 : Map
+
+Array.prototype.map = function (fn, context) {
+  const arr = new Array(this.length);
+  for (let i = 0; i < arr.length; i++) {
+    if (i in this) arr[i] = fn.call(context, this[i], i, this);
+  }
+  return arr;
+};
+
+// Javascript from the Inside #2: Filter
+
+Array.prototype.filter = function (fn, context) {
+  const arr = [];
+  let len = this.length;
+  for (let i = 0; i < len; i++) {
+    if (i in this) fn.call(context, this[i], i, this) && arr.push(this[i]);
+  }
+  return arr;
+};
