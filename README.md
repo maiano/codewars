@@ -1,4 +1,30 @@
 ## Kata from Codewars:
 - Kotlin 6-7 kyu
 - Haskell 4-7 kyu
-- Js 5-7 kyu
+- Js 5-7 kyu:
+  - Regex validate PIN code
+  - Reverse words
+  - Shortest Word
+  - Exes and Ohs
+  - Highest and Lowest
+  - Disemvowel Trolls
+  - Isograms
+  - Digits explosion
+  - Human readable duration format
+  - Duplicate Encoder
+  - Multiples of 3 or 5
+  - N-th Fibonacci
+  - Javascript Mathematician
+  - Array Deep Count
+  - Length of missing array
+  - Pair of gloves
+  - Sorting by bits
+  - Can you keep a secret?
+  - Which color is the brightest?
+  - Let's Recycle!
+  - Ones and Zeros
+  - Consecutive strings
+  - Write Number in Expanded Form
+  - Array.prototype.reverse()
+  - Javascript from the Inside #1 : Map
+  - Javascript from the Inside #2: Filter
