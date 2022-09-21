@@ -28,3 +28,4 @@
   - Array.prototype.reverse()
   - Javascript from the Inside #1 : Map
   - Javascript from the Inside #2: Filter
+  - Run-length encoding
