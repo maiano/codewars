@@ -293,3 +293,30 @@ Array.prototype.filter = function (fn, context) {
   }
   return arr;
 };
+
+// Power .bind()
+
+Function.prototype.bind = function (ctx) {
+  const fn = this;
+  return function (...args) {
+    const ctxCheck = this === global ? ctx : this;
+    return fn.apply(ctxCheck, args);
+  };
+};
+
+// Run-length encoding
+
+const runLengthEncoding = (str) => {
+  const arr = [];
+  let counter = 1;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i + 1]) {
+      counter++;
+    } else {
+      arr.push([counter, str[i]]);
+      counter = 1;
+    }
+  }
+  return arr;
+};
