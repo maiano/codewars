@@ -1,5 +1,5 @@
 ## Kata from Codewars:
-- Golang 6-7 kyu
+- Golang 5-7 kyu
 - Kotlin 6-7 kyu
 - Haskell 4-7 kyu
 - Js 5-7 kyu:
