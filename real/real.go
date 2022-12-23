@@ -10,6 +10,18 @@ import (
 	"unicode"
 )
 
+// Count the divisors of a number
+
+func Divisors(n int) int {
+	count := 1
+	for i := 1; i <= n/2; i++ {
+		if n%i == 0 {
+			count++
+		}
+	}
+	return count
+}
+
 // Two Sum
 func TwoSum(numbers []int, target int) [2]int {
 	for i := 0; i < len(numbers)-1; i++ {
@@ -269,10 +281,12 @@ func Solution(str string) []string {
 // Find the missing letter
 
 func FindMissingLetter(chars []rune) rune {
-	for i := 0; i < len(chars); i++ {
-		if next := chars[i] + 1; chars[i+1] != next {
+	next := chars[0] + 1
+	for i := 1; i < len(chars); i++ {
+		if chars[i] != next {
 			return next
 		}
+		next = chars[i] + 1
 	}
 	return 'a'
 }
