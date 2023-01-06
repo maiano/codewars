@@ -556,6 +556,52 @@ func toWeirdCase(str string) string {
 	return strings.Join(result, " ")
 }
 
+// IP Validation
+
+func Is_valid_ip(ip string) bool {
+	var valid = regexp.MustCompile(`^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$`)
+	return valid.MatchString(ip)
+}
+
+// The Supermarket Queue
+
+func QueueTime(customers []int, n int) int {
+
+	t := make([]int, n)
+	for i := 0; i < n && len(customers) != 0; i++ {
+		t[i] = customers[0]
+		customers = customers[1:]
+	}
+	for len(customers) > 0 {
+		i := minIndex(t)
+		t[i] += customers[0]
+		customers = customers[1:]
+	}
+	return maxOf(t)
+}
+
+func minIndex(vars []int) int {
+	min := vars[0]
+	index := 0
+	for i, v := range vars {
+		if min > v {
+			min = v
+			index = i
+		}
+	}
+	return index
+}
+
+func maxOf(vars []int) int {
+	max := vars[0]
+	for _, i := range vars {
+		if max < i {
+			max = i
+		}
+	}
+	return max
+}
+
 func main() {
 	fmt.Println("Hello")
 }
