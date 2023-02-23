@@ -1,5 +1,18 @@
 use std::collections::HashMap;
 
+fn duplicate_encode(word: &str) -> String {
+    let word = word.to_string().to_lowercase();
+    word.chars()
+        .map(|c| {
+            if word.matches(c).count() == 1 {
+                '('
+            } else {
+                ')'
+            }
+        })
+        .collect()
+}
+
 fn count_duplicates(text: &str) -> u32 {
     let mut map = HashMap::new();
     for ch in text.to_lowercase().chars() {
@@ -11,7 +24,7 @@ fn count_duplicates(text: &str) -> u32 {
 }
 
 fn create_phone_number(numbers: &[u8]) -> String {
-    if let [a, b, c, d, e, f, g, h, i, j] = &numbers {
+    if let [a, b, c, d, e, f, g, h, i, j] = &numbers[..] {
         format!("({}{}{}) {}{}{}-{}{}{}{}", a, b, c, d, e, f, g, h, i, j)
     } else {
         String::new()
