@@ -45,6 +45,35 @@ fn solution(num: i32) -> i32 {
     })
 }
 
+fn order(sentence: &str) -> String {
+    let mut sentence = sentence.split_whitespace().collect::<Vec<_>>();
+    sentence.sort_by_key(|s| s.chars().find(|c| c.is_digit(10)).unwrap());
+    sentence.join(" ")
+}
+
+fn break_chocolate(n: u32, m: u32) -> u64 {
+    (n as u64 * m as u64).saturating_sub(1)
+}
+
+// fn break_chocolate(n: u32, m: u32) -> u64 {
+//     if n == 0 || m == 0 {
+//         0
+//     } else {
+//         n as u64 * m as u64 - 1
+//     }
+// }
+
+fn dont_give_me_five(start: isize, end: isize) -> isize {
+    (start..=end)
+        .filter(|i| !i.to_string().contains('5'))
+        .count() as isize
+}
+
+fn printer_error(s: &str) -> String {
+    let count_error = s.bytes().filter(|&c| c > b'm').count();
+    format!("{}/{}", count_error, s.len())
+}
+
 fn find_short(s: &str) -> u32 {
     // s.split_whitespace().map(|x| x.len()).min().unwrap_or(0) as u32
     s.split_whitespace()
@@ -63,7 +92,7 @@ fn descending_order(mut x: u64) -> u64 {
     let mut digits = Vec::new();
     while x > 0 {
         digits.push(x % 10);
-        x = x / 10;
+        x /= 10;
     }
     digits.sort();
     digits.iter().rev().fold(0, |s, n| s * 10 + n)
@@ -119,7 +148,7 @@ fn positive_sum(slice: &[i32]) -> i32 {
             s += i;
         }
     }
-    return s;
+    s
 }
 
 fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
