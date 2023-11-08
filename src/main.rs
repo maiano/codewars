@@ -1,7 +1,7 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 fn duplicate_encode(word: &str) -> String {
-    let word = word.to_string().to_lowercase();
+    let word = word.to_lowercase();
     word.chars()
         .map(|c| {
             if word.matches(c).count() == 1 {
@@ -151,6 +151,10 @@ fn positive_sum(slice: &[i32]) -> i32 {
     s
 }
 
+fn positive_sum2(slice: &[i32]) -> i32 {
+    slice.iter().filter(|x| x.is_positive()).sum()
+}
+
 fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
     match operator {
         '+' => value1 + value2,
@@ -159,6 +163,19 @@ fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
         '/' => value1 / value2,
         _ => 0,
     }
+}
+
+fn dna_strand(dna: &str) -> String {
+    // Translate the DNA strand
+    dna.chars()
+        .map(|c| match c {
+            'A' => 'T',
+            'T' => 'A',
+            'G' => 'C',
+            'C' => 'G',
+            _ => unreachable!(),
+        })
+        .collect()
 }
 
 fn main() {
