@@ -178,6 +178,15 @@ fn dna_strand(dna: &str) -> String {
         .collect()
 }
 
+fn add_binary(a: u64, b: u64) -> String {
+    (0..64)
+        .rev()
+        .map(|n| (((a + b) >> n) & 1).to_string())
+        .collect::<String>()
+        .trim_start_matches("0")
+        .to_owned()
+}
+
 fn main() {
     println!("Hello, world!");
 }
