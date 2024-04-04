@@ -1,5 +1,6 @@
 ## Kata from Codewars:
 - Rust 6-8 kyu
+- Python 6-8 kyu
 - Golang 5-7 kyu
 - Kotlin 6-7 kyu
 - Haskell 4-7 kyu
