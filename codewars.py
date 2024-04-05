@@ -1,3 +1,31 @@
+import functools
+
+
+# Who likes it?
+def likes(names):
+    match names:
+        case []:
+            return "no one likes this"
+        case [a]:
+            return f"{a} likes this"
+        case [a, b]:
+            return f"{a} and {b} like this"
+        case [a, b, c]:
+            return f"{a}, {b} and {c} like this"
+        case [a, b, _, *rest]:
+            return f"{a}, {b} and {len(rest)+1} others like this"
+
+
+# Find the odd int
+def find_it(seq):
+    return functools.reduce(lambda x, y: x ^ y, seq)
+
+
+# Stop gninnipS My sdroW!
+def spin_words(sentence: str):
+    return " ".join(s if len(s) < 5 else s[::-1] for s in sentence.split())
+
+
 def solution(number):
     return sum(i for i in range(3, number) if i % 3 == 0 or i % 5 == 0)
 
