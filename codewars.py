@@ -1,6 +1,11 @@
 import functools
 
 
+# Array.diff
+def array_diff(a, b):
+    return [x for x in a if x not in b]
+
+
 # Who likes it?
 def likes(names):
     match names:
