@@ -1,4 +1,24 @@
 import functools
+from collections import Counter
+
+
+# Duplicate Encoder
+def duplicate_encode(word):
+    word = word.lower()
+    counter = Counter(word)
+    return "".join(")" if counter[c] > 1 else "(" for c in word)
+
+
+# Counting Duplicates
+def duplicate_count(text: str):
+    hashmap = {}
+    count = 0
+    for c in text.lower():
+        hashmap.setdefault(c, 0)
+        hashmap[c] += 1
+        if hashmap[c] == 2:
+            count += 1
+    return count
 
 
 # Array.diff
