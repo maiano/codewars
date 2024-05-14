@@ -2,6 +2,11 @@ import functools
 from collections import Counter
 
 
+# Replace With Alphabet Position
+def alphabet_position(text: str):
+    return " ".join(str(ord(c) - 96) for c in text.lower() if c.isalpha())
+
+
 # Duplicate Encoder
 def duplicate_encode(word):
     word = word.lower()
